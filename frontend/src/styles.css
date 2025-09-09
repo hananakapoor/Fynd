@@ -1,0 +1,214 @@
+/* Import Google Fonts for a modern, professional look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* --- General & Layout --- */
+body {
+  font-family: 'Inter', sans-serif;
+  
+  /* Multi-image background for a dynamic, social media feel */
+  background-image:
+    url('https://images.unsplash.com/photo-1611100570321-f1e56b464c8d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), /* First abstract image */
+    url('https://images.unsplash.com/photo-1549490349-0129a6e6a14c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'), /* Second abstract image */
+    url('https://images.unsplash.com/photo-1617056627702-fe8c4e4277c0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Third abstract image */
+  
+  /* Background properties for each image */
+  background-position:
+    center top,
+    center center,
+    center bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  
+  color: #fff; /* Light text for better contrast */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative; /* Needed for the overlay */
+  overflow-x: hidden; /* Prevent horizontal scroll on some browsers */
+}
+
+/* Background overlay for better text readability */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1; /* Keep content above the overlay */
+}
+
+/* --- Header & Title --- */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Adds a nice shadow to the text */
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+h1 .icon {
+  font-size: 2.8rem;
+  color: #a463f2;
+}
+
+/* --- Search Bar --- */
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+  border-radius: 50px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  background: transparent; /* Use a transparent background to show the frosted effect */
+  color: white;
+  outline: none;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-bar button {
+  padding: 15px 35px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  background: linear-gradient(90deg, #6c5ce7, #a463f2);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+  background: linear-gradient(90deg, #5a4bcf, #9356d4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- Results Section (Reels/Feed-like layout) --- */
+.results-container {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.results-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px); /* Frosted card effect */
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.result-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.result-card p {
+  font-size: 0.95rem;
+  color: #eee;
+  line-height: 1.6;
+  word-break: break-all;
+  margin-bottom: 15px;
+}
+
+.result-card a {
+  font-size: 0.95rem;
+  color: #a463f2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.result-card a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  .search-bar input {
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+  }
+
+  .search-bar button {
+    border-radius: 0 0 20px 20px;
+    width: 100%;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
